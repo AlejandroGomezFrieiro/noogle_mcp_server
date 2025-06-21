@@ -1,0 +1,42 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - published
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python with uv
+      uses: astral-sh/uv-action@v1
+    - name: Install dependencies
+      run: |
+        uv pip install pytest
+    - name: Run tests
+      run: |
+        pytest
+
+  publish:
+    needs: test
+    if: github.event_name == 'release' && github.event.action == 'published'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python with uv
+      uses: astral-sh/uv-action@v1
+    - name: Install dependencies
+      run: |
+        uv pip install build twine
+    - name: Build package
+      run: uv build
+    - name: Publish package to PyPI
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: twine upload dist/*
