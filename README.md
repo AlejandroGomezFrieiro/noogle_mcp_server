@@ -21,6 +21,7 @@ The output of `flake.nix` contains a script to start the server. After cloning t
 
 ```bash
 nix run .
+nix run github:AlejandroGomezFrieiro/noogle_mcp_server
 
 ```
 ### Standard Python
@@ -28,7 +29,7 @@ nix run .
 The `nix-docs-server` is an application that exposes the `query_nix_docs` functionality as a service (via FastMCP). After cloning the repository, you can run the server using one of the following:
 
 ```bash
-python -m noogle_mcp_server.main
+python -m noogle_mcp_server
 ```
 
 ## Development
