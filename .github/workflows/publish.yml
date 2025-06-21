@@ -22,7 +22,7 @@ jobs:
           uv sync --extra test
     - name: Run tests
       run: |
-        pytest
+          uv run --frozen pytest
 
   publish:
     needs: test
