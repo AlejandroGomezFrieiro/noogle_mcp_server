@@ -1,0 +1,30 @@
+[project]
+name = "noogle_mcp_server"
+version = "0.1.0"
+description = "A FastMCP server for querying Nix documentation from noogle.dev"
+requires-python = ">=3.11"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "fastmcp",
+    "httpx",
+]
+
+
+# [tool.uv.dev-dependencies]
+# pytest = "*"
+# pytest-asyncio = "*"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+noogle_mcp_server = "noogle_mcp_server.main:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.4.1",
+    "pytest-httpx>=0.35.0",
+    "pytest-asyncio>=1.0.0",
+]
+

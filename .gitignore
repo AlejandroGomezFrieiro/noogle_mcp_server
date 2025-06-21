@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / compiled files.direnv/
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.o
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg
+*.egg-info/
+.eggs/
+parts/
+sdist/
+var/
+*.whl
+
+# Installer logs
+pip-log.txt
+pip-delete-this-file.txt
+
+# Unit test / coverage reports
+.coverage
+.tox/
+.pytest_cache/
+pytest.ini
+
+# Virtual environment
+venv/
+env/
+.venv/
+.direnv/
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.Trashes
+Thumbs.db
+
+# MyPy
+.mypy_cache/
+
+# Sphinx documentation
+_build/
+.env
+
