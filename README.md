@@ -15,21 +15,65 @@ The major reason to write it was to test for myself how much can I push an AI-as
 
 ## Usage
 
-### Nix
+### Standalone with Nix
 
 The output of `flake.nix` contains a script to start the server. After cloning the repository, you can do
 
 ```bash
 nix run .
 nix run github:AlejandroGomezFrieiro/noogle_mcp_server
-
 ```
-### Standard Python
 
-The `nix-docs-server` is an application that exposes the `query_nix_docs` functionality as a service (via FastMCP). After cloning the repository, you can run the server using one of the following:
+### Standalone Python
+
+The `nix-docs-server` is an application that exposes the `query_nix_docs` functionality as a service (via FastMCP). First install the server with
+
+```bash
+pip install noogle_mcp_server
+```
+
+Then start the server with 
 
 ```bash
 python -m noogle_mcp_server
+```
+
+### Editor-integrated tool.
+
+This tool can easily be setup as an mcp tool using, for example, [mcphub](https://github.com/ravitemer/mcphub.nvim).
+
+#### Using nix (recommended)
+
+```json
+{
+    "mcp_servers": {
+      "noogle_mcp_server": {  
+        "args": [  
+          "run",  
+          "github:AlejandroGomezFrieiro/noogle_mcp_server"  
+        ],  
+        "command": "nix"  
+      },
+    }
+}
+```
+
+#### Using Python
+
+After installing it following the instructions, you can call it with
+
+```json
+{
+    "mcp_servers": {
+      "noogle_mcp_server": {  
+        "args": [  
+          "-m",  
+          "noogle_mcp_server"  
+        ],  
+        "command": "python"  
+      },
+    }
+}
 ```
 
 ## Development
